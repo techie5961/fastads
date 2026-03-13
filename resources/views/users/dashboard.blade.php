@@ -255,9 +255,74 @@
             border:1px solid var(--primary) !important;
             border-radius:5px !important;
         }
+        .parent{
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background:rgba(0,0,0,0.4);
+            padding:20px;
+            z-index:4000;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content: center;
+            gap:10px;
+
+
+        }
+        .parent .child{
+            background:white;
+            padding:20px;
+            width:100%;
+            border-radius:20px;
+            border:1px solid var(--primary-07);
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content: center;
+            gap:10px;
+            text-align:center;
+            max-width:500px;
+            user-select: none;
+            animation:animate 0.5s linear forwards;
+        }
+        @keyframes animate{
+            0%{
+                transform: scale(0.8)
+            }
+            100%{
+                transform: scale(1)
+            }
+        }
     </style>
 @endsection
 @section('main')
+<div onclick="this.remove()" class="parent">
+    <div onclick="event.stopPropagation()" class="child">
+<div class="w-70 perfect-square bg-primary primary-text column align-center justify-center circle">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="50" width="50"><path d="M216,72H180.92c.39-.33.79-.65,1.17-1A29.53,29.53,0,0,0,192,49.57,32.62,32.62,0,0,0,158.44,16,29.53,29.53,0,0,0,137,25.91a54.94,54.94,0,0,0-9,14.48,54.94,54.94,0,0,0-9-14.48A29.53,29.53,0,0,0,97.56,16,32.62,32.62,0,0,0,64,49.57,29.53,29.53,0,0,0,73.91,71c.38.33.78.65,1.17,1H40A16,16,0,0,0,24,88v32a16,16,0,0,0,16,16v64a16,16,0,0,0,16,16h60a4,4,0,0,0,4-4V120H40V88h80v32h16V88h80v32H136v92a4,4,0,0,0,4,4h60a16,16,0,0,0,16-16V136a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72ZM84.51,59a13.69,13.69,0,0,1-4.5-10A16.62,16.62,0,0,1,96.59,32h.49a13.69,13.69,0,0,1,10,4.5c8.39,9.48,11.35,25.2,12.39,34.92C109.71,70.39,94,67.43,84.51,59Zm87,0c-9.49,8.4-25.24,11.36-35,12.4C137.7,60.89,141,45.5,149,36.51a13.69,13.69,0,0,1,10-4.5h.49A16.62,16.62,0,0,1,176,49.08,13.69,13.69,0,0,1,171.49,59Z"></path></svg>
+
+</div>
+<strong class="desc">Welcome Back</strong>
+<span class="opacity-07">Click on the buttons below to join our social communities for more giveaways and updates.</span>
+    <div onclick="window.open('{{ $social->whatsapp }}')" class="w-full h-40 br-10 bg-green c-white row align-center justify-center g-10">
+     <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path></svg>
+
+     </span>
+        <span>Whatsapp Channel</span>
+    </div>
+      <div onclick="window.open('{{ $social->telegram }}')" class="w-full h-40 br-10 bg-blue c-white row align-center justify-center g-10">
+     <span>
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M228.88,26.19a9,9,0,0,0-9.16-1.57L17.06,103.93a14.22,14.22,0,0,0,2.43,27.21L72,141.45V200a15.92,15.92,0,0,0,10,14.83,15.91,15.91,0,0,0,17.51-3.73l25.32-26.26L165,220a15.88,15.88,0,0,0,10.51,4,16.3,16.3,0,0,0,5-.79,15.85,15.85,0,0,0,10.67-11.63L231.77,35A9,9,0,0,0,228.88,26.19ZM175.53,208,92.85,135.5l119-85.29Z"></path></svg>
+
+     </span>
+        <span>Telegram Channel</span>
+    </div>
+</div>
+</div>
    <section class="column w-full">
     <div class="w-full main-parent">
         <div class="row align-center g-5">

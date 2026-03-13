@@ -121,7 +121,7 @@ footer .child .f-links.active{
  
   left:20px;
   right:20px;
-  width:1000%;
+  width:100%;
   max-width:500px;
   background:var(--primary);
   border-radius:10px;

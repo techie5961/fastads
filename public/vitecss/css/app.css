@@ -354,6 +354,8 @@ main{
 }
 
 .notify.success{
+    border:1px solid #4caf50;
+    background: rgba(0,255,0,0.2);
      border-left:3px solid #4caf50;
 }
 .notify.success .body .icon{
@@ -365,6 +367,8 @@ main{
 
 }
 .notify.error{
+    border:1px solid red !important;
+    background:rgba(255,0,0,0.2) !important;
     border-left:3px solid red;
 }
 .notify.error .body .icon{
