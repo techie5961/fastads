@@ -435,5 +435,13 @@ class UsersDashboardController extends Controller
             'earned' => DB::table('transactions')->where('json->data->type','referral_commission')->where('user_id',Auth::guard('users')->user()->id)->sum('amount')
         ]);
     }
+    // spin
+    public function Spin(){
+        $spinned=DB::table('transactions')->where('user_id',Auth::guard('users')->user()->id)->where('type','Daily Spin')->whereDate('date','=',Carbon::today())->count();
+       
+        return view('users.spin',[
+            'spinned' => $spinned
+        ]);
+    }
 
 }

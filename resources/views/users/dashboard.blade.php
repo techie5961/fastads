@@ -404,6 +404,14 @@
             </div>
             <span class="c-primary">Post Ads</span>
            </div>
+             {{-- new nav --}}
+           <div onclick="window.location.href='{{ url('users/spin') }}'" class="column g-5 align-center">
+             <div style="background:linear-gradient(to bottom right,var(--primary),var(--primary-light))" class="h-50 br-10 bg-primary perfect-square primary-text no-shrink row align-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm39.11,25.19C170.24,83.71,155,99.44,135,113.61c-2.25-24.48-8.44-49.8-38.37-67.82a87.89,87.89,0,0,1,70.5,3.4ZM40.18,133.54c28.34-20,49.57-14.68,71.87-4.39C92,143.34,73.19,161.36,72.52,196.26A87.92,87.92,0,0,1,40.18,133.54Zm136.5,67.73c-31.45-14.55-37.47-35.58-39.71-60,12.72,5.86,26.31,10.75,41.3,10.75,11.33,0,23.46-2.8,36.63-10.08A88.2,88.2,0,0,1,176.68,201.27Z"></path></svg>
+      
+            </div>
+            <span class="c-primary">Daily Spin</span>
+           </div>
             {{-- new nav --}}
            <div onclick="window.location.href='{{ url('users/tasks') }}'" class="column g-5 align-center">
              <div style="background:linear-gradient(to bottom right,var(--primary),var(--primary-light))" class="h-50 br-10 bg-primary perfect-square primary-text no-shrink row align-center justify-center">
@@ -412,14 +420,7 @@
             </div>
             <span class="c-primary">Tasks</span>
            </div>
-            {{-- new nav --}}
-           <div onclick="window.location.href='{{ url('users/settings') }}'" class="column g-5 align-center">
-             <div style="background:linear-gradient(to bottom right,var(--primary),var(--primary-light))" class="h-50 br-10 bg-primary perfect-square primary-text no-shrink row align-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M216,130.16q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.6,107.6,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.29,107.29,0,0,0-26.25-10.86,8,8,0,0,0-7.06,1.48L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.6,107.6,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
-
-            </div>
-            <span class="c-primary">Settings</span>
-           </div>
+          
         </div>
     </div>
 

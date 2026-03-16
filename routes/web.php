@@ -143,6 +143,9 @@ Route::prefix('users')->group(function(){
     Route::get('invite',[
         UsersDashboardController::class,'Invite'
     ]);
+    Route::get('spin',[
+        UsersDashboardController::class,'Spin'
+    ]);
     
 
 
@@ -214,6 +217,9 @@ Route::prefix('users')->group(function(){
         ]);
         Route::post('submit/withdrawal/request/process',[
             UserPostRequestController::class,'Withdraw'
+        ]);
+        Route::post('daily/spin/process',[
+            UserPostRequestController::class,'DailySpin'
         ]);
        
     });

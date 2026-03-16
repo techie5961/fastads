@@ -13,6 +13,15 @@ class UserPostRequestController extends Controller
 {
     // register
     public function Register(){
+         if(request()->has('ref')){
+             if(DB::table('users')->where('ip',request()->ip())->exists()){
+                return response()->json([
+                    'message' => 'Self Referral is strictly prohibitted',
+                    'status' => 'error'
+                ]);
+
+        }
+        }
          $general_settings=json_decode(DB::table('settings')->where('key','general_settings')->first()->json ?? '{}');
         
         $welcome_bonus = $general_settings->welcome_bonus;
@@ -54,6 +63,7 @@ class UserPostRequestController extends Controller
         'coupon' => request()->input('coupon') ?? null,
         'activities_balance' => $welcome_bonus,
         'photo' => 'avatar.jpg',
+        'ip' => request()->ip(),
         'ref' => request()->input('ref'),
         'password' => Hash::make(request()->input('password')),
         'updated' => Carbon::now(),
@@ -169,9 +179,15 @@ class UserPostRequestController extends Controller
     }
     // withdraw
     public function Withdraw(){
+        if(DB::table('transactions')->where('user_id',Auth::guard('users')->user()->id)->where('status','pending')->where('type','like','%withdrawal%')->exists()){
+            return response()->json([
+                'message' => 'You currently have a pending withdrawal,please wait till its approved before placing another',
+                'status' => 'error'
+            ]);
+        }
          $pkg=json_decode(Auth::guard('users')->user()->package);
         $finance=json_decode(DB::table('settings')->where('key','finance_settings')->first()->json ?? '{}');
-        $max_withdrawal=2000;
+        $max_withdrawal=1200;
         if(request('wallet') == ''){
         return response()->json([
             'message' => 'Please select a wallet to withdraw from',
@@ -483,6 +499,40 @@ class UserPostRequestController extends Controller
             'status' => 'success',
             // 'url' => url('users/transaction/receipt?id=').DB::table('transactions')->where('uniqid',$uniqid)->where('user_id',Auth::guard('users')->user()->id)->first()->id
         ]);
+    }
+
+    // daily spin
+    public function DailySpin(){
+        $result=str_replace('₦','',request('result'));
+        if(DB::table('transactions')->where('user_id',Auth::guard('users')->user()->id)->where('type','Daily Spin')->whereDate('date','=',Carbon::today())->exists()){
+            return response()->json([
+                'message' => 'You have already spinned today',
+                'status' => 'error'
+            ]);
+        }
+        DB::table('users')->where('id',Auth::guard('users')->user()->id)->update([
+            'activities_balance' => DB::raw('activities_balance + '.$result.'')
+        ]);
+         DB::table('transactions')->insert([
+             'uniqid' => strtoupper(uniqid('trx')),
+            'user_id' => Auth::guard('users')->user()->id,
+            'type' => 'Daily Spin',
+            'class' => 'credit',
+            'amount' => $result,
+            'svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 256 256"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z"></path></svg>',
+            'json' => json_encode([
+                'data' => '{}',
+                'wallet' => 'activities_balance'
+            ]),
+            'status' => 'success',
+            'updated' => Carbon::now(),
+            'date' => Carbon::now()
+        ]);
+         return response()->json([
+                'message' => 'Daily spin successfull',
+                'status' => 'success'
+            ]);
+
     }
    
   

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name') }} | Admins | @yield('title')</title>
-    <link rel="icon" type="image/png" href="{{ asset('favicon/favicon-96x96.png?v=1.3') }} />
+    <link rel="icon" type="image/png" href="{{ asset('favicon/favicon-96x96.png?v=1.3') }}" />
 <link rel="icon" type="image/svg+xml" href="{{ asset('favicon/favicon.svg?v=1.31.2') }}" />
 <link rel="shortcut icon" href="{{  asset('favicon/favicon.svg?v=1.31.2') }}" />
 <link rel="apple-touch-icon" sizes="180x180" href="{{  asset('favicon/apple-touch-icon.png?v=1.2') }}" />
