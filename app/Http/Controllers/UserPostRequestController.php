@@ -62,6 +62,7 @@ class UserPostRequestController extends Controller
         'package' => json_encode([]),
         'coupon' => request()->input('coupon') ?? null,
         'activities_balance' => $welcome_bonus,
+        'deposit_balance' => 0,
         'photo' => 'avatar.jpg',
         'ip' => request()->ip(),
         'ref' => request()->input('ref'),
